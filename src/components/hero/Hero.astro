@@ -1,0 +1,257 @@
+---
+import hero from '../../assets/hero.webp';
+---
+
+<div id="container">
+  <main>
+    <section id="hero">
+      <img
+        src={hero.src}
+        alt="Kait influencer"
+        class="hero__bg"
+        loading="eager"
+      />
+
+      <!-- Overlay -->
+      <div class="hero__overlay"></div>
+
+      <!-- Content -->
+      <div class="hero__content">
+        <div class="hero__panel hero__panel--left"></div>
+
+        <div class="hero__panel hero__panel--right">
+          <div class="hero__text">
+            <h1>
+              <span>Kait</span>
+              <span>Huerta</span>
+            </h1>
+            <p class="hero__subtitle">
+              UGC Creator & Strategist | English and Spanish speaking
+            </p>
+
+            <a href="mailto:hello@kaithuerta.com" class="hero__contact"
+              >hello@kaithuerta.com</a
+            >
+            <p class="hero__description">
+              I create authentic, relatable UGC content that helps mama and
+              family-focused brands connect with real parents. By turning
+              everyday parenting moments into engaging, trust-building content,
+              I help brands increase conversions across both paid ads and
+              organic platforms.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<style>
+  #container {
+    height: 100%;
+  }
+
+  main {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  #hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    min-height: 60vh;
+  }
+
+  /* Image behaves like background */
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 38%;
+  }
+
+  #hero::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 16%;
+    z-index: 1;
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    /* 👇 subtle light blend */
+    background: rgba(255, 255, 255, 0.2);
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 1)
+    );
+
+    mask-image: linear-gradient(
+      to top,
+      black 10%,
+      rgba(0, 0, 0, 0.6) 60%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to top,
+      black 10%,
+      rgba(0, 0, 0, 0.6) 60%,
+      transparent 100%
+    );
+
+    pointer-events: none;
+  }
+
+  .image {
+    height: 50%; /* Adjust height as needed */
+    background: inherit; /* Use the same background as the image */
+    filter: blur(10px);
+  }
+
+  /* Overlay for readability */
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+  }
+
+  /* Content */
+  .hero__content {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Left side stays empty */
+  .hero__panel--left {
+    min-width: 0;
+  }
+
+  /* Right side contains the text */
+  .hero__panel--right {
+    display: flex;
+    align-items: center;
+
+    padding-left: clamp(2rem, 5vw, 5rem);
+    padding-right: clamp(2rem, 5vw, 5rem);
+  }
+
+  .hero__text {
+    max-width: 420px;
+    text-align: left;
+  }
+
+  .hero__text h1 {
+    margin: 0;
+  }
+
+  h1 {
+    text-transform: uppercase;
+  }
+  .hero__text h1 {
+    font-weight: 700;
+
+    font-size: clamp(3rem, 8vw, 8rem);
+
+    line-height: 0.8;
+    letter-spacing: -0.08em;
+
+    margin: 0;
+  }
+
+  .hero__text h1 span {
+    display: block;
+  }
+
+  p {
+    font-size: clamp(1.3rem, 8vw, 1rem);
+    padding-left: 5px;
+    margin-top: 0.5rem;
+  }
+
+  .hero__contact {
+    font-weight: 700;
+    display: inline-block;
+    font-size: 1.2rem;
+    background-color: #7ed957;
+    border-radius: 0.2rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .hero__contact:hover {
+    background: #7ed957b0;
+    transform: translateY(-1px);
+  }
+
+  .hero__subtitle {
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+
+    color: #494c51;
+
+    margin-bottom: 0.75rem;
+  }
+
+  .hero__description {
+    font-size: 1.3rem;
+    line-height: 1.6;
+
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero__content {
+      grid-template-columns: 1fr;
+    }
+
+    .hero__panel--left {
+      display: none;
+    }
+
+    .hero__panel--right {
+      justify-content: center;
+      padding: 0 1.5rem;
+      text-align: center;
+    }
+
+    .hero__text {
+      text-align: center;
+    }
+  }
+
+  @media screen and (max-height: 368px) {
+    #news {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    #container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #hero {
+      display: block;
+      padding-top: 10%;
+    }
+
+    h1 {
+      line-height: 1.5;
+    }
+  }
+</style>
