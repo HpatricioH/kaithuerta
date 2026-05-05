@@ -1,0 +1,30 @@
+---
+import { videosContent } from '../../data/videos';
+
+const videos = await videosContent;
+---
+
+<section
+  class="w-full flex flex-col justify-center items-center py-16 px-4 bg-secondary"
+>
+  <h2 class="uppercase font-bold text-6xl tracking-tighter">
+    Family Lifestyle Content
+  </h2>
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 justify-center max-w-6xl w-full"
+  >
+    {
+      videos?.map((video) => (
+        <div class="w-65 mx-auto mt-8">
+          <video
+            class="w-full aspect-9/16 object-cover rounded-2xl"
+            src={video.src}
+            controls
+            preload="metadata"
+            playsinline
+          />
+        </div>
+      ))
+    }
+  </div>
+</section>
