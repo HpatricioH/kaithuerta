@@ -1,0 +1,115 @@
+---
+import {
+  MicOff,
+  LocateOff,
+  CctvOff,
+  TimerOff,
+  Copy,
+  Megaphone,
+  CircleX,
+  CircleCheckBig,
+  Smile,
+  SquareDashedText,
+  Zap,
+  Palette,
+  RefreshCcw,
+} from "@lucide/astro";
+import { videosComeWith } from "../../data/videosComeWith";
+import { videosDontComeWith } from "../../data/videosDontComeWith";
+
+const items = videosComeWith;
+const videosDontItems = videosDontComeWith;
+
+const comeWithIcons = {
+  Smile,
+  SquareDashedText,
+  Zap,
+  Palette,
+  RefreshCcw,
+};
+
+const dontComeWithIcons = {
+  MicOff,
+  LocateOff,
+  CctvOff,
+  TimerOff,
+  Copy,
+  Megaphone,
+};
+---
+
+<section class="w-full py-16 px-4">
+  <div class="w-full max-w-6xl mx-auto flex flex-col items-center">
+    <h2 class="uppercase font-bold text-4xl md:text-6xl tracking-tighter text-center">
+      My Creative Process & Production
+    </h2>
+
+    <div class="w-full mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div>
+        <!-- Header -->
+        <div class="flex items-center gap-2">
+          <CircleCheckBig class="w-8 h-8 text-green-500 shrink-0" />
+          <h3 class="leading-tight font-black">My Videos come with</h3>
+        </div>
+
+        <div class="w-full h-0.5 bg-tertiary mt-2 mb-4"></div>
+
+        <!-- Card -->
+        <ul class="flex flex-col gap-4">
+          {
+            items.map((item) => {
+              const Icon = comeWithIcons[item.icon];
+
+              return (
+                <li class="border-l-4 border-l-tertiary hover:transform hover:-translate-y-1">
+                  <article class="flex gap-3 bg-secondary p-4 items-start min-h-28 ">
+                    <div aria-hidden="true" class="shrink-0">
+                      <Icon stroke="green"/>
+                    </div>
+                    <div>
+                      <h3 class="text-lg font-black">{item.title}</h3>
+                      <p>{item.description}</p>
+                    </div>
+                  </article>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </div>
+
+      <div>
+        <!-- Header -->
+        <div class="flex items-center gap-2">
+          <CircleX class="w-8 h-8 text-red-500 shrink-0" />
+          <h3 class="leading-tight font-black">My Videos Don't Come With</h3>
+        </div>
+
+        <div class="w-full h-0.5 bg-red-500 mt-2 mb-4"></div>
+
+        <!-- Card -->
+        <ul class="flex flex-col gap-4">
+          {
+            videosDontItems.map((item) => {
+              const Icon = dontComeWithIcons[item.icon];
+
+              return (
+                <li class="border-l-4 border-l-red-500 hover:transform hover:-translate-y-1">
+                  <article class="flex gap-3 bg-secondary p-4 items-start min-h-28">
+                    <div aria-hidden="true" class="shrink-0">
+                      <Icon stroke="red"/>
+                    </div>
+                    <div>
+                      <h3 class="text-lg font-black">{item.title}</h3>
+                      <p>{item.description}</p>
+                    </div>
+                  </article>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
