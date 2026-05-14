@@ -1,0 +1,73 @@
+---
+import {
+  MicOff,
+  LocateOff,
+  CctvOff,
+  TimerOff,
+  Copy,
+  Megaphone,
+  CircleX,
+  CircleCheckBig,
+  Smile,
+  SquareDashedText,
+  Zap,
+  Palette,
+  RefreshCcw,
+} from "@lucide/astro";
+
+interface Props {
+  items: Array<{ title: string; description: string; icon: string }>;
+  color: string
+  iconStroke: string
+  title: string
+}
+
+const { items, color, iconStroke, title }: Props = Astro.props;
+
+const comeWithIcons: Record<string, any> = {
+  Smile,
+  SquareDashedText,
+  Zap,
+  Palette,
+  RefreshCcw,
+  MicOff,
+  LocateOff,
+  CctvOff,
+  TimerOff,
+  Copy,
+  Megaphone,
+};
+---
+
+<div>
+  <!-- Header -->
+  <div class="flex items-center gap-2">
+    <CircleCheckBig class=`w-8 h-8 text-${color} shrink-0` />
+    <h3 class="leading-tight font-black uppercase">{title}</h3>
+  </div>
+
+  <div class=`w-full h-0.5 bg-${color} mt-2 mb-4`></div>
+
+  <!-- Card -->
+  <ul class="flex flex-col gap-4">
+    {
+      items.map((item) => {
+        const Icon = comeWithIcons[item.icon as keyof typeof comeWithIcons];
+
+        return (
+          <li class={`border-l-4 border-l-${color} hover:transform hover:-translate-y-1`}>
+            <article class="flex gap-3 bg-secondary p-4 items-start min-h-28 ">
+              <div aria-hidden="true" class="shrink-0">
+                <Icon stroke={iconStroke} />
+              </div>
+              <div>
+                <h3 class="text-lg font-black">{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            </article>
+          </li>
+        );
+      })
+    }
+  </ul>
+</div>
