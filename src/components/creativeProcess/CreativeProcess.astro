@@ -1,4 +1,5 @@
 ---
+import { CircleX, CircleCheckBig } from "@lucide/astro";
 import { videosComeWith } from "../../data/videosComeWith";
 import { videosDontComeWith } from "../../data/videosDontComeWith";
 import CreativeProcessCard from "./CreativeProcessCard.astro";
@@ -19,17 +20,19 @@ const videosDontItems = videosDontComeWith;
       <!-- Left Panel -->
       <CreativeProcessCard
         items={items}
-        color="tertiary"
+        variant="positive"
         iconStroke="green"
         title="My videos come with"
-      />
-
-      <!-- Right Panel -->
-      <CreativeProcessCard
+        Icon={CircleCheckBig}
+        />
+        
+        <!-- Right Panel -->
+        <CreativeProcessCard
         items={videosDontItems}
-        color="red-500"
+        variant="negative"
         iconStroke="red"
         title="My videos don't come with"
+        Icon={CircleX}
       />
     </div>
   </div>

@@ -6,8 +6,6 @@ import {
   TimerOff,
   Copy,
   Megaphone,
-  CircleX,
-  CircleCheckBig,
   Smile,
   SquareDashedText,
   Zap,
@@ -15,16 +13,54 @@ import {
   RefreshCcw,
 } from "@lucide/astro";
 
-interface Props {
-  items: Array<{ title: string; description: string; icon: string }>;
-  color: string
-  iconStroke: string
-  title: string
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+
+type Variant = "positive" | "negative";
+
+type IconName =
+  | "Smile"
+  | "SquareDashedText"
+  | "Zap"
+  | "Palette"
+  | "RefreshCcw"
+  | "MicOff"
+  | "LocateOff"
+  | "CctvOff"
+  | "TimerOff"
+  | "Copy"
+  | "Megaphone";
+
+interface Item {
+  title: string;
+  description: string;
+  icon: IconName;
 }
 
-const { items, color, iconStroke, title }: Props = Astro.props;
+interface Props {
+  items: Item[];
+  iconStroke: string;
+  title: string;
+  Icon: AstroComponentFactory;
+  variant: Variant;
+}
 
-const comeWithIcons: Record<string, any> = {
+const { items, iconStroke, title, Icon, variant }: Props = Astro.props;
+
+const styles: Record<Variant, { icon: string; line: string; border: string }> =
+  {
+    positive: {
+      icon: "text-tertiary",
+      line: "bg-tertiary",
+      border: "border-l-tertiary",
+    },
+    negative: {
+      icon: "text-red-600",
+      line: "bg-red-600",
+      border: "border-l-red-600",
+    },
+  };
+
+const icons: Record<IconName, AstroComponentFactory> = {
   Smile,
   SquareDashedText,
   Zap,
@@ -37,28 +73,32 @@ const comeWithIcons: Record<string, any> = {
   Copy,
   Megaphone,
 };
+
+const style = styles[variant];
 ---
 
 <div>
   <!-- Header -->
   <div class="flex items-center gap-2">
-    <CircleCheckBig class=`w-8 h-8 text-${color} shrink-0` />
+    <Icon class=`w-8 h-8 ${style.icon} shrink-0` />
     <h3 class="leading-tight font-black uppercase">{title}</h3>
   </div>
 
-  <div class=`w-full h-0.5 bg-${color} mt-2 mb-4`></div>
+  <div class=`w-full h-0.5 ${style.line} mt-2 mb-4`></div>
 
   <!-- Card -->
   <ul class="flex flex-col gap-4">
     {
       items.map((item) => {
-        const Icon = comeWithIcons[item.icon as keyof typeof comeWithIcons];
+        const IconSvg = icons[item.icon];
 
         return (
-          <li class={`border-l-4 border-l-${color} hover:transform hover:-translate-y-1`}>
+          <li
+            class={`border-l-4 ${style.border} hover:transform hover:-translate-y-1`}
+          >
             <article class="flex gap-3 bg-secondary p-4 items-start min-h-28 ">
               <div aria-hidden="true" class="shrink-0">
-                <Icon stroke={iconStroke} />
+                <IconSvg stroke={iconStroke} />
               </div>
               <div>
                 <h3 class="text-lg font-black">{item.title}</h3>
