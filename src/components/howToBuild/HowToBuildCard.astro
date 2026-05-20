@@ -1,0 +1,98 @@
+---
+import {
+    Magnet,
+    Frown,
+    Lightbulb,
+    Star,
+    Crosshair,
+    CircleCheckBig,
+} from "@lucide/astro";
+
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+
+type IconName = "Magnet" | "Frown" | "Lightbulb" | "Star" | "Crosshair";
+
+interface card {
+    id: string;
+    icon: IconName;
+    title: string;
+    description: string;
+    points?: string[];
+    note?: string;
+}
+
+interface Props {
+    cards: card[];
+}
+
+const { cards }: Props = Astro.props;
+
+const icons: Record<IconName, AstroComponentFactory> = {
+    Magnet,
+    Frown,
+    Lightbulb,
+    Star,
+    Crosshair,
+};
+---
+
+<div class="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-5 items-stretch">
+    {
+        cards.map((card, index) => {
+            const IconSvg = icons[card.icon];
+
+            return (
+                <div class="flex flex-col items-center">
+                    {/* Progress */}
+                    <div class="relative w-full max-w-65 mx-auto flex justify-center">
+                        {index !== 0 && (
+                            <div class="absolute right-1/2 top-1/2 w-[calc(100%+2rem)] border-t border-dashed border-[#c96f7b]/60 hidden lg:block" />
+                        )}
+
+                        <span
+                            class={`relative z-10 flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold text-white ${
+                                index === cards.length - 1
+                                    ? "bg-[#2F4F3E]"
+                                    : "bg-[#c96f7b]"
+                            }`}
+                        >
+                            {`0${index + 1}`}
+                        </span>
+                    </div>
+
+                    <div class={`flex flex-col items-center h-full w-full max-w-65 mx-aut text-center rounded-2xl p-6 shadow-sm hover:shadow-2xl transition ${card.id !== "cta" ? "bg-white" : "bg-[#2F4F3E]"}`}>
+                        {/* Header */}
+                        <div class="w-16 h-16 rounded-full bg-secondary flex items-center justify-center">
+                            <IconSvg class={`w-9 h-9 ${card.id !== "cta" ? "" : "text-[#2F4F3E]"}`} />
+                        </div>
+
+                        <h3 class={`text-xl font-semibold mt-3 ${card.id !== "cta" ? "" : "text-white"}`}>{card.title}</h3>
+
+                        {/* Body */}
+                        <p class={`mt-2 text-sm ${card.id !== "cta" ? "text-neutral-600" : "text-white"}`}>
+                            {card.description}
+                        </p>
+
+                        {card.id !== "cta" && (
+                            <div class="w-10 h-0.5 bg-tertiary mx-auto mt-4 rounded-full" />
+                        )}
+
+                        <p class="mt-3 text-sm text-neutral-600">{card.note}</p>
+
+                        <ul class="mt-4 space-y-2 text-sm text-neutral-700">
+                            {card.points?.map((point) => (
+                                <li class="flex justify-baseline items-center gap-2">
+                                    <CircleCheckBig
+                                        stroke="green"
+                                        class="w-4 h-4"
+                                    />
+                                    {point}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+            );
+        })
+    }
+</div>

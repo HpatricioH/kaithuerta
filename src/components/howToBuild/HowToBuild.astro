@@ -1,13 +1,64 @@
 ---
+import { buildContentData } from "../../data/buildContent";
+import HowToBuildCard from "./HowToBuildCard.astro";
+
 
 ---
 
 <section class="w-full py-16 px-4 bg-secondary">
     <div class="w-full max-w-6xl mx-auto flex flex-col items-center">
+        <!-- Header -->
         <h2
-            class="uppercase font-bold text-4xl md:text-6xl tracking-tighter text-center"
+            class="text-4xl md:text-6xl font-bold tracking-tight leading-tight uppercase"
         >
-            How I build content that converts
+            How I build content that
+            <span class="relative inline-block font-serif italic text-tertiary">
+                converts
+                <svg
+                    class="absolute left-[-0.03em] bottom-[-0.28em] h-[0.55em] w-[1.08em] min-w-full overflow-visible"
+                    viewBox="0 0 260 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M6 20
+         C48 8, 98 8, 148 10
+         C125 13, 106 17, 98 22
+         C135 14, 190 12, 254 14"
+                        stroke="currentColor"
+                        stroke-width="5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+            </span>
         </h2>
+        <p class="mt-10 text-xl max-w-5xl mx-auto text-muted text-center">
+            It's easy to make something look good. It's much harder to make it
+            convert. That's why I've spent the last year not just creating “fun”
+            videos, but building a strategic UGC approach designed to drive real
+            results. Every piece I create follows a framework rooted in human
+            psychology and storytelling, so your brand doesn't just get views-<span
+                class="text-tertiary font-bold">it gets sales</span
+            >
+        </p>
+
+        <!-- Cards -->
+        <HowToBuildCard cards={buildContentData}/>
+
+        <!-- Bottom Statement -->
+        <div
+            class="mt-16 bg-white rounded-xl px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4 shadow-sm"
+        >
+            <p class="text-sm text-neutral-700">
+                ❤️ This isn't random content. It's intentional content that
+                <span class="text-red-400 font-medium">converts.</span>
+            </p>
+
+            <p class="text-sm text-neutral-700">
+                📈 More than views. Real impact.
+                <span class="text-red-400 font-medium">Real sales.</span>
+            </p>
+        </div>
     </div>
 </section>
