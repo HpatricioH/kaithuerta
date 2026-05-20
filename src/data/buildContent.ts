@@ -1,6 +1,6 @@
 type ContentItem = {
   id: string;
-  icon: string;
+  icon: "Magnet" | "Frown" | "Lightbulb" | "Star" | "Crosshair";
   title: string;
   description: string;
   points?: string[];
