@@ -52,7 +52,7 @@ const icons: Record<IconName, AstroComponentFactory> = {
                         <span
                             class={`relative z-10 flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold text-white ${
                                 index === cards.length - 1
-                                    ? "bg-[#2F4F3E]"
+                                    ? "bg-tertiary"
                                     : "bg-[#c96f7b]"
                             }`}
                         >
@@ -60,10 +60,10 @@ const icons: Record<IconName, AstroComponentFactory> = {
                         </span>
                     </div>
 
-                    <div class={`flex flex-col items-center h-full w-full max-w-65 mx-aut text-center rounded-2xl p-6 shadow-sm hover:shadow-2xl transition ${card.id !== "cta" ? "bg-white" : "bg-[#2F4F3E]"}`}>
+                    <div class={`flex flex-col items-center h-full w-full max-w-65 mx-aut text-center rounded-2xl p-6 shadow-sm hover:shadow-2xl transition ${card.id !== "cta" ? "bg-white" : "bg-tertiary"}`}>
                         {/* Header */}
                         <div class="w-16 h-16 rounded-full bg-secondary flex items-center justify-center">
-                            <IconSvg class={`w-9 h-9 ${card.id !== "cta" ? "" : "text-[#2F4F3E]"}`} />
+                            <IconSvg class={`w-9 h-9 ${card.id !== "cta" ? "" : "text-tertiary"}`} />
                         </div>
 
                         <h3 class={`text-xl font-semibold mt-3 ${card.id !== "cta" ? "" : "text-white"}`}>{card.title}</h3>
