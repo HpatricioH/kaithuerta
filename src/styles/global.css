@@ -5,9 +5,10 @@
   --font-primary: 'League Spartan', sans-serif;
 
   --color-primary: #292929;
-  --color-secondary: #F5F2ED;
-  --color-tertiary: #5FAE46;
-  --color-neutral: #C2C3C3
+  --color-secondary: #F8F6F1;
+  --color-tertiary: #2F4F3E;
+  --color-neutral: #C2C3C3;
+  --color-optional: #dfeed7;
 }
 
 body {
