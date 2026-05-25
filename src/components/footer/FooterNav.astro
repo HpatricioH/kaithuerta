@@ -1,0 +1,50 @@
+---
+import { footerNavData } from "../../data/footerNavData";
+import instagram from "../../assets/instagram.svg";
+import tiktok from "../../assets/tiktok.svg";
+import { Mail } from "@lucide/astro";
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+
+type IconName = "Mail" | "instagram" | "tiktok";
+const icons: Record<IconName, AstroComponentFactory> = {
+  Mail,
+  instagram,
+  tiktok,
+};
+---
+
+<nav
+  class="flex w-full max-w-6xl justify-evenly items-stretch mx-auto gap-5 py-6"
+>
+  {
+    footerNavData.map((item) => {
+      const links = item.links;
+
+      return (
+        <div
+          class={`${item.title === "For Brands" ? "border-x-2 border-neutral/40 px-25" : ""}`}
+        >
+          <div>
+            <h2 class="uppercase text-lg text-tertiary font-semibold">
+              {item.title}
+            </h2>
+            <ul class="flex flex-col gap-2 mt-4">
+              {links.map((link) => {
+                const IconSvg = link.icon ? icons[link.icon] : null;
+
+                return (
+                  <li class="flex gap-2 hover:underline hover:decoration-alert-neutral">
+                    {IconSvg && (
+                      <IconSvg class="stroke-alert-neutral w-7 h-7 cursor-pointer" />
+                    )}
+                    <a href={link.href}>{link.label}</a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+      );
+    })
+  }
+</nav>

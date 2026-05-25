@@ -1,0 +1,97 @@
+---
+import logoFooter from "../../assets/logo footer.webp";
+import instagram from "../../assets/instagram.svg";
+import tiktok from "../../assets/tiktok.svg";
+import { ArrowRight, Mail, Heart } from "@lucide/astro";
+import FooterNav  from "./FooterNav.astro"
+---
+
+<section class="w-full bg-secondary">
+
+  <div class="flex w-full max-w-6xl justify-center items-center mx-auto gap-6 pt-6">
+    <!-- Logo -->
+    <div class="relative flex-1">
+      <img
+        src={logoFooter.src}
+        alt="Kait about me picture"
+        loading="eager"
+        class="w-100"
+      />
+    </div>
+
+    <!-- Body -->
+    <div class="relative flex-1">
+      <p class="text-3xl font-semibold">Real Moments</p>
+      <p class="text-3xl font-semibold">Real Connection</p>
+      <p class="text-3xl font-semibold text-alert-neutral">Real Results</p>
+
+      <div class="w-14 h-0.5 bg-tertiary my-3"></div>
+
+      <p>
+        I create authentic, relatable UGC content that helps mama and
+        family-focused brands connect with real parents and turn everyday
+        moments into impact
+      </p>
+
+      <div class="flex flex-row gap-3 my-3">
+        <a
+          href="https://www.instagram.com/kait.huerta?igsh=dnU1OTUxYjRraTI1&utm_source=qr"
+          target="_blank"
+          ><img
+            src={instagram.src}
+            width="30"
+            height="30"
+            alt="instagram logo"
+            class="hover:-translate-y-0.5"
+          /></a
+        >
+        <a
+          href="https://www.tiktok.com/@kait.huerta?_r=1&_t=ZS-95PT5GSUiqw"
+          target="_blank"
+          ><img
+            src={tiktok.src}
+            width="30"
+            height="30"
+            alt="tiktok logo"
+            class="hover:-translate-y-0.5"
+          /></a
+        >
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="flex relative flex-1">
+      <div
+        class="flex flex-col justify-center items-center gap-3 bg-white shadow-lg rounded-3xl p-6"
+      >
+        <Mail class="w-15 h-15 stroke-alert-neutral stroke-1" />
+        <h2 class="text-tertiary text-2xl font-semibold">
+          Let's Work Together
+        </h2>
+        <p class="text-center">
+          Have a project in mind? I'd love to hear from you!
+        </p>
+        <a
+          href="mailto:hello@kaithuerta.com"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-alert-neutral text-white font-semibold hover:opacity-90"
+        >
+          Work With Me
+          <ArrowRight />
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Separator -->
+  <div class="flex justify-center items-center mb-2">
+    <div class="flex items-center gap-10.5 w-full max-w-6xl">
+      <div class="w-full h-0.5 bg-alert-neutral"></div>
+      <Heart class="shrink-0 fill-alert-neutral stroke-alert-neutral" />
+      <div class="w-full h-0.5 bg-alert-neutral"></div>
+    </div>
+  </div>
+
+  <FooterNav />
+</section>
