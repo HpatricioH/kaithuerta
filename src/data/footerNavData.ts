@@ -14,11 +14,11 @@ export const footerNavData: FooterSection[] = [
     title: "Navigation",
     links: [
       { label: "Home", href: "/" },
-      { label: "About me", href: "/about" },
-      { label: "Portfolio", href: "/portfolio" },
-      { label: "How I Build", href: "/how-i-build" },
-      { label: "Creative Process", href: "/creative-process" },
-      { label: "Contact", href: "/contact" },
+      { label: "About me", href: "#about" },
+      { label: "Portfolio", href: "#portfolio" },
+      { label: "How I Build", href: "#how-i-build" },
+      { label: "Creative Process", href: "#creative-process" },
+      { label: "Contact", href: "#contact" },
     ],
   },
   {
@@ -31,9 +31,9 @@ export const footerNavData: FooterSection[] = [
   {
     title: "Let's Connect",
     links: [
-      { label: "hello@kaithuerta.com", href: "mailto:hello@kaithuerta.com", icon:  "Mail" },
-      { label: "kait.huerta", href: "https://instagram.com/kait.huerta", icon:  "instagram" },
-      { label: "@kait.huerta", href: "https://tiktok.com/@kait.huerta", icon:  "tiktok" },
+      { label: "hello@kaithuerta.com", href: "mailto:hello@kaithuerta.com", icon: "Mail" },
+      { label: "kait.huerta", href: "https://instagram.com/kait.huerta", icon: "instagram" },
+      { label: "@kait.huerta", href: "https://tiktok.com/@kait.huerta", icon: "tiktok" },
     ],
   },
 ];
