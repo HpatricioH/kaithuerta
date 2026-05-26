@@ -1,0 +1,46 @@
+---
+import kaithuerta_logo from "../../assets/kaithuerta_logo.webp";
+import { navbarData } from "../../data/navbarData";
+import { ArrowRight } from "@lucide/astro";
+---
+
+<header
+  class="fixed top-0 z-40 w-full shadow-sm bg-surface/80 backdrop-blur-xs"
+>
+  <nav class="max-w-6xl mx-auto flex items-center justify-between">
+    <!-- logo -->
+    <a href="/" class="shrink-0 h-8 md:h-14 lg:h-16">
+      <img
+        src={kaithuerta_logo.src}
+        alt="kait huerta logo"
+        class="h-full object-contain"
+      />
+    </a>
+
+    <!-- Menu -->
+    <div class="flex-1">
+      <ul class="flex justify-end gap-10 pr-10">
+        {
+          navbarData.map((item) => (
+            <li class="hover:underline hover:decoration-alert-neutral hover:text-alert-neutral">
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <!-- CTA -->
+    <div class="shrink-0">
+      <a
+          href="mailto:hello@kaithuerta.com"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-alert-neutral text-white tracking-wider hover:opacity-90"
+        >
+          Work With Me
+          <ArrowRight  class="w-5 h-5"/>
+        </a>
+    </div>
+  </nav>
+</header>
