@@ -33,7 +33,7 @@ const icons: Record<IconName, AstroComponentFactory> = {
                 const IconSvg = link.icon ? icons[link.icon] : null;
 
                 return (
-                  <li class="flex gap-2 hover:underline hover:decoration-alert-neutral">
+                  <li class="flex gap-2 hover:underline hover:decoration-alert-neutral hover:text-alert-neutral">
                     {IconSvg && (
                       <IconSvg class="stroke-alert-neutral w-7 h-7 cursor-pointer" />
                     )}
