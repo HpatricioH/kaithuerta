@@ -1,0 +1,35 @@
+---
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+import { Users, Heart, Target } from "@lucide/astro";
+import { HeroData } from "../../data/heroData";
+
+type IconName = "Users" | "Heart" | "Target";
+
+const icons: Record<IconName, AstroComponentFactory> = {
+  Users,
+  Heart,
+  Target,
+};
+
+// TODO make this component reusable. 
+---
+<article class="flex justify-evenly items-center mt-16">
+  {
+    HeroData.map((item) => {
+      const IconSvg = icons[item.icon];
+  
+      return (
+        <div
+          class={`flex flex-col justify-center items-center text-center
+            ${item.id === "strategic" ? "border-x-2 border-neutral px-6" : ""}`}
+        >
+          <div class="flex items-center justify-center bg-secondary w-14 h-14 rounded-full mb-3">
+            <IconSvg class="stroke-alert-neutral w-7 h-7" />
+          </div>
+          <h3 class="text-tertiary font-black uppercase text-sm">{item.title}</h3>
+          <p class="text-sm w-40">{item.description}</p>
+        </div>
+      );
+    })
+  }
+</article>
