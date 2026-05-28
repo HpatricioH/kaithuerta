@@ -14,7 +14,7 @@ const icons: Record<IconName, AstroComponentFactory> = {
 ---
 
 <nav
-  class="flex w-full max-w-6xl justify-evenly items-stretch mx-auto gap-5 py-6"
+  class="mx-auto grid w-full max-w-6xl grid-cols-1 gap-8 py-8 text-center sm:grid-cols-2 lg:grid-cols-3"
 >
   {
     footerNavData.map((item) => {
@@ -22,21 +22,27 @@ const icons: Record<IconName, AstroComponentFactory> = {
 
       return (
         <div
-          class={`${item.title === "For Brands" ? "border-x-2 border-neutral/40 px-25" : ""}`}
+          class={`flex justify-center lg:block ${
+            item.title === "For Brands"
+              ? "lg:border-x-2 lg:border-neutral/40 lg:px-12"
+              : ""
+          }`}
         >
           <div>
-            <h2 class="uppercase text-lg text-tertiary font-semibold">
+            <h2 class="text-lg font-semibold uppercase text-tertiary">
               {item.title}
             </h2>
-            <ul class="flex flex-col gap-2 mt-4">
+
+            <ul class="mt-4 flex flex-col items-center gap-2">
               {links.map((link) => {
                 const IconSvg = link.icon ? icons[link.icon] : null;
 
                 return (
-                  <li class="flex gap-2 hover:underline hover:decoration-alert-neutral hover:text-alert-neutral">
+                  <li class="flex items-center gap-2 transition hover:text-alert-neutral hover:underline hover:decoration-alert-neutral">
                     {IconSvg && (
-                      <IconSvg class="stroke-alert-neutral w-7 h-7 cursor-pointer" />
+                      <IconSvg class="h-6 w-6 shrink-0 stroke-alert-neutral" />
                     )}
+
                     <a href={link.href}>{link.label}</a>
                   </li>
                 );

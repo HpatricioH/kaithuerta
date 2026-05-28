@@ -1,20 +1,26 @@
 ---
-import {
-  Heart,
-} from "@lucide/astro";
+import { Heart } from "@lucide/astro";
 ---
 
-<div class="w-full bg-surface p-2">
-  <div class="flex w-full max-w-6xl justify-center items-center mx-auto gap-6 py-3">
-    <div class="flex-1 text-[1rem]">
+<div class="w-full bg-surface px-4 py-3 sm:px-6">
+  <div
+    class="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-3 text-center md:flex-row md:text-left"
+  >
+    <!-- Left -->
+    <div class="text-sm sm:text-base">
       <p>© 2026 Kait Huerta. All rights reserved.</p>
     </div>
-    <div class="flex flex-row-reverse gap-4 flex-1">
-      <Heart class="fill-alert-neutral stroke-0 w-5 h-5"/>
-      <p class="font-secondary italic text-[1rem] text-tertiary">Mama, Creator, Storyteller</p>
 
+    <!-- Center -->
+    <div class="flex items-center justify-center gap-2 text-center">
+      <Heart class="h-5 w-5 fill-alert-neutral stroke-0 shrink-0" />
+
+      <p class="font-secondary text-sm italic text-tertiary sm:text-base">
+        Mama, Creator, Storyteller
+      </p>
     </div>
-    <div class="flex-1">
-    </div>
+
+    <!-- Right Spacer -->
+    <div class="hidden md:block md:w-55"></div>
   </div>
 </div>
