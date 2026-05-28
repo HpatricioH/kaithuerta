@@ -3,17 +3,22 @@ import { buildContentData } from "../../data/buildContent";
 import HowToBuildCard from "./HowToBuildCard.astro";
 ---
 
-<section id="how-i-build" class="w-full py-16 px-4 bg-secondary">
-	<div class="w-full max-w-6xl mx-auto flex flex-col items-center">
+<section
+	id="how-i-build"
+	class="w-full bg-secondary px-4 py-16 sm:px-6 lg:px-8"
+>
+	<div class="mx-auto flex w-full max-w-6xl flex-col items-center">
 		<!-- Header -->
 		<h2
-			class="text-4xl md:text-6xl font-bold tracking-tight leading-tight uppercase"
+			class="max-w-5xl text-center text-4xl font-bold uppercase leading-tight tracking-tight sm:text-5xl lg:text-6xl"
 		>
 			How I build content that
+
 			<span class="relative inline-block font-serif italic text-alert-neutral">
 				converts
+
 				<svg
-					class="absolute left-[-0.03em] bottom-[-0.28em] h-[0.55em] w-[1.08em] min-w-full overflow-visible"
+					class="absolute bottom-[-0.28em] left-[-0.03em] h-[0.55em] w-[1.08em] min-w-full overflow-visible"
 					viewBox="0 0 260 32"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
@@ -21,9 +26,9 @@ import HowToBuildCard from "./HowToBuildCard.astro";
 				>
 					<path
 						d="M6 20
-         C48 8, 98 8, 148 10
-         C125 13, 106 17, 98 22
-         C135 14, 190 12, 254 14"
+            C48 8, 98 8, 148 10
+            C125 13, 106 17, 98 22
+            C135 14, 190 12, 254 14"
 						stroke="currentColor"
 						stroke-width="5"
 						stroke-linecap="round"
@@ -31,31 +36,36 @@ import HowToBuildCard from "./HowToBuildCard.astro";
 				</svg>
 			</span>
 		</h2>
-		<p class="mt-10 text-xl max-w-5xl mx-auto text-muted text-center">
+
+		<!-- Description -->
+		<p
+			class="mx-auto mt-8 max-w-4xl text-center text-base leading-relaxed text-muted sm:text-lg lg:text-xl"
+		>
 			It's easy to make something look good. It's much harder to make it
 			convert. That's why I've spent the last year not just creating “fun”
 			videos, but building a strategic UGC approach designed to drive real
 			results. Every piece I create follows a framework rooted in human
-			psychology and storytelling, so your brand doesn't just get views-<span
-				class="text-tertiary font-bold">it gets sales</span
-			>
+			psychology and storytelling, so your brand doesn't just get views —
+			<span class="font-bold text-tertiary">it gets sales.</span>
 		</p>
 
 		<!-- Cards -->
-		<HowToBuildCard cards={buildContentData} />
+		<div class="mt-12 w-full">
+			<HowToBuildCard cards={buildContentData} />
+		</div>
 
 		<!-- Bottom Statement -->
 		<div
-			class="mt-16 bg-white rounded-xl px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4 shadow-sm"
+			class="mt-14 flex w-full max-w-4xl flex-col items-center justify-between gap-4 rounded-2xl bg-white px-6 py-5 text-center shadow-sm md:flex-row md:text-left"
 		>
-			<p class="text-sm text-neutral-700">
+			<p class="text-sm leading-relaxed text-neutral-700 sm:text-base">
 				❤️ This isn't random content. It's intentional content that
-				<span class="text-red-400 font-medium">converts.</span>
+				<span class="font-medium text-red-400">converts.</span>
 			</p>
 
-			<p class="text-sm text-neutral-700">
+			<p class="text-sm leading-relaxed text-neutral-700 sm:text-base">
 				📈 More than views. Real impact.
-				<span class="text-red-400 font-medium">Real sales.</span>
+				<span class="font-medium text-red-400">Real sales.</span>
 			</p>
 		</div>
 	</div>
