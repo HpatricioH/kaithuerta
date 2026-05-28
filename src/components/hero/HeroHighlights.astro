@@ -11,23 +11,36 @@ const icons: Record<IconName, AstroComponentFactory> = {
   Target,
 };
 
-// TODO make this component reusable. 
+// TODO make this component reusable.
 ---
-<article class="flex justify-evenly items-center mt-16">
+
+<article
+  class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-0"
+>
   {
     HeroData.map((item) => {
       const IconSvg = icons[item.icon];
-  
+
       return (
         <div
-          class={`flex flex-col justify-center items-center text-center
-            ${item.id === "strategic" ? "border-x-2 border-neutral px-6" : ""}`}
+          class={`flex flex-col items-center text-center px-4
+          ${
+            item.id === "strategic"
+              ? "lg:border-x-2 lg:border-neutral lg:px-8"
+              : ""
+          }`}
         >
-          <div class="flex items-center justify-center bg-secondary w-14 h-14 rounded-full mb-3">
-            <IconSvg class="stroke-alert-neutral w-7 h-7" />
+          <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-secondary sm:h-16 sm:w-16">
+            <IconSvg class="h-7 w-7 stroke-alert-neutral sm:h-8 sm:w-8" />
           </div>
-          <h3 class="text-tertiary font-black uppercase text-sm">{item.title}</h3>
-          <p class="text-sm w-40">{item.description}</p>
+
+          <h3 class="text-sm font-black uppercase tracking-wide text-tertiary">
+            {item.title}
+          </h3>
+
+          <p class="mt-2 max-w-55 text-sm leading-relaxed text-primary">
+            {item.description}
+          </p>
         </div>
       );
     })
