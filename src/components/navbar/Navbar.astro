@@ -5,11 +5,13 @@ import { ArrowRight } from "@lucide/astro";
 ---
 
 <header
-  class="fixed top-0 z-40 w-full shadow-sm bg-surface/80 backdrop-blur-xs"
+  class="fixed top-0 z-40 w-full bg-surface/80 shadow-sm backdrop-blur-xs"
 >
-  <nav class="max-w-6xl mx-auto flex items-center justify-between">
-    <!-- logo -->
-    <a href="/" class="shrink-0 h-8 md:h-14 lg:h-16">
+  <nav
+    class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8"
+  >
+    <!-- Logo -->
+    <a href="/" class="h-10 shrink-0 sm:h-12 lg:h-16">
       <img
         src={kaithuerta_logo.src}
         alt="kait huerta logo"
@@ -18,12 +20,17 @@ import { ArrowRight } from "@lucide/astro";
     </a>
 
     <!-- Menu -->
-    <div class="flex-1">
-      <ul class="flex justify-end gap-10 pr-10">
+    <div class="hidden flex-1 lg:block">
+      <ul class="flex items-center justify-end gap-6 pr-4 text-sm lg:gap-8 lg:pr-10 lg:text-base">
         {
           navbarData.map((item) => (
-            <li class="hover:underline hover:decoration-alert-neutral hover:text-alert-neutral">
-              <a href={item.href}>{item.label}</a>
+            <li>
+              <a
+                href={item.href}
+                class="transition hover:text-alert-neutral hover:underline hover:decoration-alert-neutral"
+              >
+                {item.label}
+              </a>
             </li>
           ))
         }
@@ -33,14 +40,15 @@ import { ArrowRight } from "@lucide/astro";
     <!-- CTA -->
     <div class="shrink-0">
       <a
-          href="mailto:hello@kaithuerta.com"
-          target="_blank"
-          rel="noopener"
-          class="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-alert-neutral text-white tracking-wider hover:opacity-90"
-        >
-          Work With Me
-          <ArrowRight  class="w-5 h-5"/>
-        </a>
+        href="mailto:hello@kaithuerta.com"
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 rounded-full bg-alert-neutral px-4 py-2 text-sm text-white tracking-wider transition hover:opacity-90 sm:px-5 lg:px-6 lg:text-base"
+      >
+        <span class="hidden sm:inline">Work With Me</span>
+        <span class="sm:hidden">Work</span>
+        <ArrowRight class="h-4 w-4 lg:h-5 lg:w-5" />
+      </a>
     </div>
   </nav>
 </header>
