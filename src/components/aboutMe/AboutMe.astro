@@ -13,95 +13,111 @@ const icons: Record<IconName, AstroComponentFactory> = {
 };
 ---
 
-<section class="w-full py-16 px-4 bg-secondary" id="about">
-	<div class="flex w-full max-w-6xl mx-auto justify-center gap-6">
-		<!-- Right Panel -->
-		<div class="relative">
-			<img
-				src={aboutMe.src}
-				alt="Kait about me picture"
-				loading="eager"
-				class="w-418 rounded-3xl shadow-2xl"
-			/>
-		</div>
+<section class="w-full bg-secondary px-4 py-16 sm:px-6 lg:px-8" id="about">
+  <div
+    class="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14"
+  >
+    <!-- Image Panel -->
+    <div class="relative order-1 lg:order-1">
+      <img
+        src={aboutMe.src}
+        alt="Kait about me picture"
+        loading="eager"
+        class="aspect-4/5 w-full rounded-3xl object-cover shadow-2xl sm:max-h-170 lg:h-full"
+      />
+    </div>
 
-		<!-- Left Panel -->
-		<div>
-			<!-- Header -->
-			<h2
-				class="text-4xl md:text-6xl font-bold tracking-tight leading-tight uppercase"
-			>
-				About Me
-			</h2>
-			<div class="w-24 h-0.5 bg-alert-neutral mb-5"></div>
-			<p class="font-secondary italic text-alert-neutral text-4xl font-medium">
-				"Real life content builds real trust"
-			</p>
+    <!-- Content Panel -->
+    <div class="order-2 text-center lg:text-left">
+      <!-- Header -->
+      <h2
+        class="text-4xl font-bold uppercase leading-tight tracking-tight sm:text-5xl md:text-6xl"
+      >
+        About Me
+      </h2>
 
-			<!-- Body -->
-			<p class="mt-4 text-lg">
-				I've always loved capturing real-life moments, and becoming a <span
-					class="text-tertiary font-bold">Mama</span
-				> gave that passion a whole new meaning. From the everyday chaos to the little
-				wins, I naturally started creating content that reflects what family life
-				actually looks like. That's what led me to <span
-					class="text-tertiary font-bold">UGC</span
-				>-sharing honest, relatable moments that other parents can see
-				themselves in.
-			</p>
+      <div class="mx-auto mb-5 mt-2 h-0.5 w-24 bg-alert-neutral lg:mx-0"></div>
 
-			<p class="my-6 text-lg">
-				My background of 3+ years in <span class="text-tertiary font-bold"
-					>video creation</span
-				> helps me think beyond trends and focus on what actually <span
-					class="text-tertiary font-bold">connects</span
-				> with a viewer online. Now, I blend my passion for <span
-					class="text-tertiary font-bold">creativity</span
-				> with <span class="text-tertiary font-bold">conversion</span>, making
-				content that's fun, relatable, and designed to move real families <span
-					class="text-tertiary font-bold">toward action</span
-				>.
-			</p>
+      <p
+        class="font-secondary text-3xl font-medium italic text-alert-neutral sm:text-4xl"
+      >
+        "Real life content builds real trust"
+      </p>
 
-			<article class="flex justify-evenly items-center">
-				{
-					AboutMeData.map((item) => {
-						const IconSvg = icons[item.icon];
+      <!-- Body -->
+      <p class="mt-6 text-base leading-relaxed sm:text-lg">
+        I've always loved capturing real-life moments, and becoming a
+        <span class="font-bold text-tertiary">Mama</span>
+        gave that passion a whole new meaning. From the everyday chaos to the
+        little wins, I naturally started creating content that reflects what
+        family life actually looks like. That's what led me to
+        <span class="font-bold text-tertiary">UGC</span>
+        - sharing honest, relatable moments that other parents can see
+        themselves in.
+      </p>
 
-						return (
-							<div
-								class={`flex flex-col justify-center items-center text-center
-          ${item.id === "family" ? "border-x-2 border-neutral px-6" : ""}`}
-							>
-								<div class="flex items-center justify-center bg-white w-14 h-14 rounded-full mb-3">
-									<IconSvg class="stroke-alert-neutral w-7 h-7" />
-								</div>
-								<h3 class="text-tertiary font-black uppercase text-sm">
-									{item.title}
-								</h3>
-								<p class="text-sm w-40">{item.description}</p>
-							</div>
-						);
-					})
-				}
-			</article>
+      <p class="my-6 text-base leading-relaxed sm:text-lg">
+        My background of 3+ years in
+        <span class="font-bold text-tertiary">video creation</span>
+        helps me think beyond trends and focus on what actually
+        <span class="font-bold text-tertiary">connects</span>
+        with a viewer online. Now, I blend my passion for
+        <span class="font-bold text-tertiary">creativity</span>
+        with <span class="font-bold text-tertiary">conversion</span>, making
+        content that's fun, relatable, and designed to move real families
+        <span class="font-bold text-tertiary">toward action</span>.
+      </p>
 
-			<!-- Footer -->
-			<div class="w-full flex justify-center mt-6">
-				<div class="flex justify-between bg-tertiary p-4 rounded-2xl w-104">
-					<div class="flex gap-4">
-						<div class="bg-white rounded-full">
-							<div class="w-13 h-13 flex justify-center items-center">
-								<Heart class="w-8 h-8 stroke-alert-neutral" />
-							</div>
-						</div>
-						<p class="text-white">
-							Mom, Creator, Storyteller, Turning everyday moments into content
-							that connects
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+      <!-- Highlights -->
+      <article
+        class="grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-4"
+      >
+        {
+          AboutMeData.map((item) => {
+            const IconSvg = icons[item.icon];
+
+            return (
+              <div
+                class={`flex flex-col items-center text-center ${
+                  item.id === "family"
+                    ? "sm:border-x-2 sm:border-neutral sm:px-4"
+                    : ""
+                }`}
+              >
+                <div class="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-white">
+                  <IconSvg class="h-7 w-7 stroke-alert-neutral" />
+                </div>
+
+                <h3 class="text-sm font-black uppercase text-tertiary">
+                  {item.title}
+                </h3>
+
+                <p class="mt-1 max-w-45 text-sm leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            );
+          })
+        }
+      </article>
+
+      <!-- Footer Card -->
+      <div class="mt-8 flex w-full justify-center">
+        <div class="w-full max-w-105 rounded-2xl bg-tertiary p-4">
+          <div class="flex items-center gap-4">
+            <div class="shrink-0 rounded-full bg-white">
+              <div class="flex h-13 w-13 items-center justify-center">
+                <Heart class="h-8 w-8 stroke-alert-neutral" />
+              </div>
+            </div>
+
+            <p class="text-sm leading-relaxed text-white sm:text-base">
+              Mom, Creator, Storyteller. Turning everyday moments into content
+              that connects.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
