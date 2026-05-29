@@ -25,7 +25,7 @@ export const footerNavData: FooterSection[] = [
     title: "For Brands",
     links: [
       { label: "Work With Me", href: "mailto:hello@kaithuerta.com" },
-      { label: "Content Strategy Call", href: "https://calendly.com/your-link" },
+      { label: "Content Strategy Call", href: "https://calendly.com/hello-kaithuerta/15-minute-meeting" },
     ],
   },
   {

@@ -43,7 +43,17 @@ const icons: Record<IconName, AstroComponentFactory> = {
                       <IconSvg class="h-6 w-6 shrink-0 stroke-alert-neutral" />
                     )}
 
-                    <a href={link.href} target="_blank">{link.label}</a>
+                    <a
+                      href={link.href}
+                      target={
+                        item.title === "Let's Connect" ||
+                        item.title === "For Brands"
+                          ? "_blank"
+                          : undefined
+                      }
+                    >
+                      {link.label}
+                    </a>
                   </li>
                 );
               })}
